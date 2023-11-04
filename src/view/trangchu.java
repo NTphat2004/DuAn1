@@ -843,7 +843,6 @@ public class trangchu extends JFrame {
 
     public void openmenubar() {
         new Thread(new Runnable() {
-
             @Override
             public void run() {
                 for (int i = 0; i < width; i++) {
