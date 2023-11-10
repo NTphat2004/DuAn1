@@ -9,8 +9,8 @@ package Util;
  * @author Nguyen Van Loi
  */
 import Object.NhanVien;
-public class Auth {
-    public static NhanVien user  = null;
+public class Authemail {
+    public static String email  = null;
     /**
      * Xóa thông tin của người sử dụng khi có yêu cầu đăng xuất
      */
