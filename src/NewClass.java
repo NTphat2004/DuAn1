@@ -13,16 +13,16 @@ import java.sql.DriverManager;
 public class NewClass {
 
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static String dburl = "jdbc:sqlserver://localhost;database=Edusys;encrypt=false;trustservercertificate=true";
+    private static String dburl = "jdbc:sqlserver://localhost;database=SUPERDuAn1;encrypt=false;trustservercertificate=true";
     private static String username = "sa";
     private static String password = "1234";
 
     public static void main(String[] args) {
         try {
             Connection connection = DriverManager.getConnection(dburl, username, password);
-            String sql = "SELECT * FROM NhanVien where MaNV = ? ";
+            String sql = "SELECT * FROM Nhan_Vien where MaNV = ? ";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, "DMoc");
+            ps.setString(1, "NV001");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
