@@ -6,6 +6,7 @@ package view;
 
 import Util.TempVariable;
 import Util.XImage;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -13,7 +14,11 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JApplet;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class SanPham extends javax.swing.JPanel {
@@ -24,7 +29,6 @@ public class SanPham extends javax.swing.JPanel {
         initComponents();
         try {
             lblName.setText(tensp);
-
             lblPrice.setText(String.valueOf(gia).toString().replaceAll("\\.?0*$", "") + " VNĐ");
             String folderUrl = "src/icon/";
             ImageIcon iconorigin = new javax.swing.ImageIcon(("src\\icon\\" + hinhurl));
@@ -36,6 +40,7 @@ public class SanPham extends javax.swing.JPanel {
 //            System.out.println();
             defaultcolor = (new Color(246, 247, 246));
             blankcolor = (new Color(242, 246, 250));
+
             setBackground(defaultcolor);
             Border emptyBorder = BorderFactory.createEmptyBorder(6, 6, 6, 6);
             btnAddToCart.setIcon(new ImageIcon("src\\icon\\add_50px.png"));
@@ -44,11 +49,15 @@ public class SanPham extends javax.swing.JPanel {
             btnAddToCart.setContentAreaFilled(false);
             btnAddToCart.setBorderPainted(false);
             btnAddToCart.setFocusPainted(false);
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+    }
+
+    public static JButton btnaddtocart() {
+        return btnAddToCart;
     }
 
     /**
@@ -65,6 +74,7 @@ public class SanPham extends javax.swing.JPanel {
         lblPrice = new javax.swing.JLabel();
         btnAddToCart = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 255));
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -112,13 +122,12 @@ public class SanPham extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-        JOptionPane.showMessageDialog(null, lblName.getText() + " \n" + lblPrice.getText() + " \n" + lblIcon.getToolTipText());
-        TempVariable.ten.add(lblName.getText());
-        
+
+
     }//GEN-LAST:event_formMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddToCart;
+    public static javax.swing.JButton btnAddToCart;
     private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPrice;

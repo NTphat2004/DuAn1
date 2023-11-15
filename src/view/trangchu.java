@@ -22,12 +22,16 @@ import javax.swing.border.BevelBorder;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.SwingConstants;
 import javax.swing.JMenu;
-import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class trangchu extends JFrame {
 
 	private JPanel contentPane;
 	JPanel panelmenu;
+	JPanel panelcclt;
 	Color defaultcolor, clickcolor;
 	JPanel panel;
 	JPanel panel_2;
@@ -41,18 +45,21 @@ public class trangchu extends JFrame {
 	JPanel panel_2_3_3_1_1;
 	JPanel panel_2_3_3_1_2;
 	JPanel panel_2_3_3_1_3;
-	JLabel lblNewLabel_10_1;
-	JLabel lblNewLabel_10;
 	JLabel lblNewLabel_10_2;
-	JLabel lblNewLabel_7_2;
-	JLabel lblNewLabel_7_2_1;
-	JLabel lblNewLabel_7_2_2;
-
+	JPanel panelsetting;
+	double first;
+	double second;
+	double sum;
 	/**
 	 * Launch the application.
 	 */
 	int width = 229;
 	int height = 692;
+	int widthst = 416;
+	int heightst = 66;
+	int withcct =311;
+	int heightcct = 394;
+	String pheptoan = "";
 	private final JLabel lblNewLabel_6 = new JLabel("New label");
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -166,7 +173,6 @@ public class trangchu extends JFrame {
 			public void mousePressed(MouseEvent e) {
 				
 			}
-                        
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				panel_2.setBackground(clickcolor);
@@ -235,7 +241,6 @@ public class trangchu extends JFrame {
 		lblNhnVin.setBounds(-20, 0, 159, 43);
 		panel_2_1.add(lblNhnVin);
 		
-                 
 		 panel_2_2 = new JPanel();
 		panel_2_2.setLayout(null);
 		panel_2_2.setBounds(0, 259, 229, 43);
@@ -255,7 +260,7 @@ public class trangchu extends JFrame {
 				panel_2_2.setBackground(defaultcolor);
 			}
 		});
-		         
+		
 		JLabel lblThngK = new JLabel("   Thống Kê");
 		lblThngK.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-analytics-36.png")));
 		lblThngK.setHorizontalAlignment(SwingConstants.CENTER);
@@ -635,7 +640,7 @@ public class trangchu extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(205, 252, 225));
-		panel_1.setBounds(10, 180, 1048, 512);
+		panel_1.setBounds(0, 180, 1048, 512);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -661,95 +666,274 @@ public class trangchu extends JFrame {
 //			}
 //		});
 		panel_3.setBackground(new Color(255, 255, 255));
-		panel_3.setBounds(25, 93, 297, 330);
+		panel_3.setBounds(40, 11, 449, 477);
 		panel_1.add(panel_3);
 		panel_3.setLayout(null);
 		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(new Color(199, 248, 215));
-		panel_4.setBounds(10, 11, 277, 177);
-		panel_3.add(panel_4);
+		JLabel lblNewLabel_10 = new JLabel("");
+		lblNewLabel_10.setIcon(new ImageIcon(trangchu.class.getResource("/icon/banhang.png")));
+		lblNewLabel_10.setBounds(0, 0, 449, 424);
+		panel_3.add(lblNewLabel_10);
 		
-		 lblNewLabel_10_1 = new JLabel("");
-		 
-		panel_4.setLayout(new CardLayout(0, 0));
-		lblNewLabel_10_1.setIcon(new ImageIcon(trangchu.class.getResource("/icon/picture1-removebg-preview.png")));
-		panel_4.add(lblNewLabel_10_1, "name_1288668325553600");
+		JLabel lblNewLabel_13 = new JLabel("BÁN HÀNG");
+		lblNewLabel_13.setForeground(new Color(255, 0, 0));
+		lblNewLabel_13.setFont(new Font("Tahoma", Font.BOLD, 26));
+		lblNewLabel_13.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_13.setBounds(169, 420, 141, 70);
+		panel_3.add(lblNewLabel_13);
 		
-		 lblNewLabel_7_2 = new JLabel("MỤC TIÊU");
-		lblNewLabel_7_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_7_2.setForeground(new Color(21, 181, 176));
-		lblNewLabel_7_2.setFont(new Font("Segoe UI", Font.BOLD, 30));
-		lblNewLabel_7_2.setBounds(69, 215, 156, 41);
-		panel_3.add(lblNewLabel_7_2);
+		 panelcclt = new JPanel();
+		panelcclt.setBackground(new Color(0, 217, 240));
+		panelcclt.setBounds(1046, 118, 1, 394);
+		panel_1.add(panelcclt);
+		panelcclt.setLayout(null);
 		
-		JPanel panel_3_1 = new JPanel();
-		panel_3_1.setBackground(new Color(255, 255, 255));
-		panel_3_1.setBounds(369, 93, 297, 330);
-		panel_1.add(panel_3_1);
-		panel_3_1.setLayout(null);
-		panel_3_1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_7_2_1.setForeground(Color.RED);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_7_2_1.setForeground(new Color(21, 181, 176));
+		JLabel text = new JLabel("");
+		text.setHorizontalAlignment(SwingConstants.RIGHT);
+		text.setFont(new Font("Tahoma", Font.BOLD, 31));
+		text.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		text.setBounds(10, 36, 291, 62);
+		panelcclt.add(text);
+		
+		JButton so9 = new JButton("9");
+		so9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = text.getText()+so9.getText();
+				text.setText(number);
 			}
 		});
+		so9.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so9.setBounds(10, 124, 56, 48);
+		panelcclt.add(so9);
 		
-		 lblNewLabel_7_2_1 = new JLabel("GIỚI THIỆU");
-		lblNewLabel_7_2_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_7_2_1.setForeground(new Color(21, 181, 176));
-		lblNewLabel_7_2_1.setFont(new Font("Segoe UI", Font.BOLD, 30));
-		lblNewLabel_7_2_1.setBounds(9, 199, 278, 57);
-		panel_3_1.add(lblNewLabel_7_2_1);
+		JButton cong = new JButton("+");
+		cong.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first = Double.parseDouble(text.getText());
+				pheptoan="+";
+				text.setText("");
+			}
+		});
+		cong.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		cong.setBounds(245, 124, 56, 48);
+		panelcclt.add(cong);
 		
-		JPanel panel_4_1 = new JPanel();
-		panel_4_1.setBackground(new Color(199, 248, 215));
-		panel_4_1.setBounds(10, 11, 277, 177);
-		panel_3_1.add(panel_4_1);
-		panel_4_1.setLayout(null);
+		JButton so7 = new JButton("7");
+		so7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = text.getText()+so7.getText();
+				text.setText(number);
+			}
+		});
+		so7.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so7.setBounds(170, 124, 56, 48);
+		panelcclt.add(so7);
 		
-		 lblNewLabel_10 = new JLabel("");
-		lblNewLabel_10.setIcon(new ImageIcon(trangchu.class.getResource("/icon/KOGAY-removebg-preview.png")));
-		lblNewLabel_10.setBounds(0, 0, 277, 177);
-		panel_4_1.add(lblNewLabel_10);
+		JButton so6 = new JButton("6");
+		so6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = text.getText()+so6.getText();
+				text.setText(number);
+			}
+		});
+		so6.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so6.setBounds(10, 194, 56, 48);
+		panelcclt.add(so6);
+		
+		JButton so8 = new JButton("8");
+		so8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = text.getText()+so8.getText();
+				text.setText(number);
+			}
+		});
+		so8.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so8.setBounds(92, 124, 56, 48);
+		panelcclt.add(so8);
+		
+		JButton tru = new JButton("-");
+		tru.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first = Double.parseDouble(text.getText());
+				pheptoan="-";
+				text.setText("");
+			}
+		});
+		tru.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		tru.setBounds(245, 194, 56, 48);
+		panelcclt.add(tru);
+		
+		JButton so4 = new JButton("4");
+		so4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = text.getText()+so4.getText();
+				text.setText(number);
+			}
+		});
+		so4.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so4.setBounds(170, 194, 56, 48);
+		panelcclt.add(so4);
+		
+		JButton so3 = new JButton("3");
+		so3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = text.getText()+so3.getText();
+				text.setText(number);
+			}
+		});
+		so3.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so3.setBounds(170, 263, 56, 48);
+		panelcclt.add(so3);
+		
+		JButton so5 = new JButton("5");
+		so5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = text.getText()+so5.getText();
+				text.setText(number);
+			}
+		});
+		so5.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so5.setBounds(92, 194, 56, 48);
+		panelcclt.add(so5);
+		
+		JButton nhan = new JButton("x");
+		nhan.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first = Double.parseDouble(text.getText());
+				pheptoan="x";
+				text.setText("");
+			}
+		});
+		nhan.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		nhan.setBounds(245, 263, 56, 48);
+		panelcclt.add(nhan);
+		
+		JButton so1 = new JButton("1");
+		so1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String number = text.getText()+so1.getText();
+				text.setText(number);
+			}
+		});
+		so1.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so1.setBounds(10, 263, 56, 48);
+		panelcclt.add(so1);
+		
+		JButton so0 = new JButton("0");
+		so0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = text.getText()+so0.getText();
+				text.setText(number);
+			}
+		});
+		so0.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so0.setBounds(10, 335, 56, 48);
+		panelcclt.add(so0);
+		
+		JButton so2 = new JButton("2");
+		so2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = text.getText()+so2.getText();
+				text.setText(number);
+			}
+		});
+		so2.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		so2.setBounds(92, 263, 56, 48);
+		panelcclt.add(so2);
+		
+		JButton chia = new JButton("/");
+		chia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first = Double.parseDouble(text.getText());
+				pheptoan="/";
+				text.setText("");
+			}
+		});
+		chia.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		chia.setBounds(245, 335, 56, 48);
+		panelcclt.add(chia);
+		
+		JButton btnNewButton_3_3_1 = new JButton("AC");
+		btnNewButton_3_3_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				text.setText("");
+				first =0;
+				second=0;
+				pheptoan="";
+			}
+		});
+		btnNewButton_3_3_1.setFont(new Font("Segoe UI", Font.BOLD, 16));
+		btnNewButton_3_3_1.setBounds(92, 335, 56, 48);
+		panelcclt.add(btnNewButton_3_3_1);
+		
+		JButton btnNewButton_3_3_2 = new JButton("=");
+		btnNewButton_3_3_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				second= Double.parseDouble(text.getText());
+				if(pheptoan=="+")
+				{
+					sum = first+second;
+					text.setText(String.valueOf(sum));
+				}
+				if(pheptoan=="-")
+				{
+					sum = first-second;
+					text.setText(String.valueOf(sum));
+				}
+				if(pheptoan=="x")
+				{
+					sum = first*second;
+					text.setText(String.valueOf(sum));
+				}
+				if(pheptoan=="/")
+				{
+					if(first<second)
+					{
+						text.setText("SỐ CHIA KHÔNG HỢP LỆ");
+					}
+					else {
+						sum = first/second;
+						text.setText(String.valueOf(sum));
+					}
+					
+				}
+				
+			}
+		});
+		btnNewButton_3_3_2.setFont(new Font("Segoe UI", Font.BOLD, 22));
+		btnNewButton_3_3_2.setBounds(170, 335, 56, 48);
+		panelcclt.add(btnNewButton_3_3_2);
+		
+		JLabel lblNewLabel_16 = new JLabel("");
+		lblNewLabel_16.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				closecclt();
+				panelcclt.setBounds(1046, 118, 1, 394);
+			}
+		});
+		lblNewLabel_16.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-x-25.png")));
+		lblNewLabel_16.setBounds(0, 0, 29, 25);
+		panelcclt.add(lblNewLabel_16);
 		
 		JPanel panel_3_2 = new JPanel();
-		panel_3_2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				lblNewLabel_7_2_2.setForeground(Color.RED);
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				lblNewLabel_7_2_2.setForeground(new Color(21, 181, 176));
-			}
-		});
-		panel_3_2.setBackground(new Color(255, 255, 255));
-		panel_3_2.setBounds(727, 93, 297, 330);
-		panel_1.add(panel_3_2);
 		panel_3_2.setLayout(null);
+		panel_3_2.setBackground(Color.WHITE);
+		panel_3_2.setBounds(554, 11, 449, 477);
+		panel_1.add(panel_3_2);
 		
-		 lblNewLabel_7_2_2 = new JLabel("CHÍNH XÁC");
-		lblNewLabel_7_2_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_7_2_2.setForeground(new Color(21, 181, 176));
-		lblNewLabel_7_2_2.setFont(new Font("Segoe UI", Font.BOLD, 30));
-		lblNewLabel_7_2_2.setBounds(9, 201, 278, 57);
-		panel_3_2.add(lblNewLabel_7_2_2);
+		JLabel lblNewLabel_13_1 = new JLabel("CÁCH SỬ DỤNG");
+		lblNewLabel_13_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_13_1.setForeground(new Color(101, 217, 15));
+		lblNewLabel_13_1.setFont(new Font("Tahoma", Font.BOLD, 26));
+		lblNewLabel_13_1.setBounds(81, 417, 325, 70);
+		panel_3_2.add(lblNewLabel_13_1);
 		
-		JPanel panel_4_2 = new JPanel();
-		panel_4_2.setBackground(new Color(199, 248, 215));
-		panel_4_2.setBounds(10, 11, 277, 177);
-		panel_3_2.add(panel_4_2);
-		panel_4_2.setLayout(null);
-		
-		JLabel lblNewLabel_10_2 = new JLabel("");
-		lblNewLabel_10_2.setIcon(new ImageIcon(trangchu.class.getResource("/icon/databaseadmin_4-removebg-preview.png")));
-		lblNewLabel_10_2.setBounds(0, 0, 277, 177);
-		panel_4_2.add(lblNewLabel_10_2);
+		JLabel lblNewLabel_14 = new JLabel("");
+		lblNewLabel_14.setIcon(new ImageIcon(trangchu.class.getResource("/icon/EXP.png")));
+		lblNewLabel_14.setBounds(48, 11, 449, 428);
+		panel_3_2.add(lblNewLabel_14);
 		
 		
 		
@@ -763,12 +947,6 @@ public class trangchu extends JFrame {
 		lblNewLabel_2_1.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-x-25.png")));
 		lblNewLabel_2_1.setBounds(1018, 0, 62, 38);
 		contentPane.add(lblNewLabel_2_1);
-		
-		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon(trangchu.class.getResource("/icon/logo-cua-hang-tien-loi-8-removebg-preview.png")));
-		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_5.setBounds(164, -21, 375, 204);
-		contentPane.add(lblNewLabel_5);
 		lblNewLabel_6.setBounds(681, -21, 98, 31);
 		contentPane.add(lblNewLabel_6);
 		
@@ -778,7 +956,6 @@ public class trangchu extends JFrame {
 		lblNewLabel_7.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_7.setBounds(593, 23, 278, 57);
 		contentPane.add(lblNewLabel_7);
-              
 		
 		JLabel lblNewLabel_7_1 = new JLabel("- Hãy hướng về ánh mặt trời, nơi mà bóng tối luôn ở sau lưng bạn");
 		lblNewLabel_7_1.setBackground(new Color(21, 181, 176));
@@ -787,20 +964,137 @@ public class trangchu extends JFrame {
 		lblNewLabel_7_1.setBounds(531, 71, 449, 68);
 		contentPane.add(lblNewLabel_7_1);
 		
-                try {
-                if(Auth.user.getGioiTinh()=="nam")
-                {
-                    lblNewLabel_1.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-account-45.png")));
-                }
-                else{
-                    lblNewLabel_1.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-female-user-45.png")));
-                }
-                lblNewLabel_8.setText(Auth.user.getTenNV());
-                lblNewLabel_9.setText(Auth.user.getVaiTro());
-            } catch (Exception e) {
-            }
+		JLabel lblNewLabel_2_2 = new JLabel("");
+		lblNewLabel_2_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				opensetting();
+			}
+		});
+		lblNewLabel_2_2.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-setting-42.png")));
+		lblNewLabel_2_2.setBounds(92, 11, 62, 50);
+		contentPane.add(lblNewLabel_2_2);
 		
-		         
+		 panelsetting = new JPanel();
+		panelsetting.setBackground(new Color(25, 118, 211));
+		panelsetting.setBounds(144, 0, 416, 1);
+		contentPane.add(panelsetting);
+		panelsetting.setLayout(null);
+		
+		JLabel lblNewLabel_11 = new JLabel("");
+		lblNewLabel_11.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				closesetting();
+			}
+		});
+		lblNewLabel_11.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-x-25.png")));
+		lblNewLabel_11.setBounds(391, 44, 25, 22);
+		panelsetting.add(lblNewLabel_11);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBorder(new LineBorder(new Color(255, 255, 255)));
+		panel_6.setBackground(new Color(25, 118, 221));
+		panel_6.setBounds(0, 0, 79, 61);
+		panelsetting.add(panel_6);
+		panel_6.setLayout(null);
+		
+		JLabel lblNewLabel_12 = new JLabel("");
+		lblNewLabel_12.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				contentPane.setBackground(Color.BLACK);
+				panel_1.setBackground(new Color(94, 97, 117));
+				panel_3.setBackground(new Color(30,33,39));
+				panel_3_2.setBackground(new Color(30,33,39));
+				lblNewLabel_7.setForeground(Color.YELLOW);
+				lblNewLabel_7_1.setForeground(Color.YELLOW);
+			}
+		});
+		lblNewLabel_12.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_12.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-dark-36.png")));
+		lblNewLabel_12.setBounds(0, 0, 79, 61);
+		panel_6.add(lblNewLabel_12);
+		
+		JPanel panel_6_1 = new JPanel();
+		panel_6_1.setBorder(new LineBorder(new Color(255, 255, 255)));
+		panel_6_1.setLayout(null);
+		panel_6_1.setBackground(new Color(25, 118, 221));
+		panel_6_1.setBounds(82, 0, 79, 61);
+		panelsetting.add(panel_6_1);
+		
+		JLabel lblNewLabel_12_1 = new JLabel("");
+		lblNewLabel_12_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				contentPane.setBackground(Color.WHITE);
+				panel_1.setBackground(new Color(205, 252, 225));
+				panel_3.setBackground(Color.WHITE);
+				panel_3_2.setBackground(Color.WHITE);
+				lblNewLabel_7.setForeground(new Color(21, 181, 176));
+				lblNewLabel_7_1.setForeground(new Color(21, 181, 176));
+				
+			}
+		});
+		lblNewLabel_12_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_12_1.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-light-36.png")));
+		lblNewLabel_12_1.setBounds(0, 0, 79, 61);
+		panel_6_1.add(lblNewLabel_12_1);
+		
+		JPanel panel_6_1_1 = new JPanel();
+		panel_6_1_1.setLayout(null);
+		panel_6_1_1.setBorder(new LineBorder(new Color(255, 255, 255)));
+		panel_6_1_1.setBackground(new Color(25, 118, 221));
+		panel_6_1_1.setBounds(166, 0, 79, 61);
+		panelsetting.add(panel_6_1_1);
+		
+		JLabel lblNewLabel_12_1_1 = new JLabel("");
+		lblNewLabel_12_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				panelcclt.setBounds(736, 118, 311, 394);
+				opencclt();
+			}
+		});
+		lblNewLabel_12_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_12_1_1.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-calculator-36.png")));
+		lblNewLabel_12_1_1.setBounds(0, 0, 79, 61);
+		panel_6_1_1.add(lblNewLabel_12_1_1);
+		
+		JPanel panel_6_1_1_1 = new JPanel();
+		panel_6_1_1_1.setLayout(null);
+		panel_6_1_1_1.setBorder(new LineBorder(new Color(255, 255, 255)));
+		panel_6_1_1_1.setBackground(new Color(25, 118, 221));
+		panel_6_1_1_1.setBounds(251, 0, 79, 61);
+		panelsetting.add(panel_6_1_1_1);
+		
+		JLabel lblNewLabel_12_1_1_1 = new JLabel("");
+		lblNewLabel_12_1_1_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_12_1_1_1.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-calendar-36.png")));
+		lblNewLabel_12_1_1_1.setBounds(0, 0, 79, 61);
+		panel_6_1_1_1.add(lblNewLabel_12_1_1_1);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setIcon(new ImageIcon(trangchu.class.getResource("/icon/logo-cua-hang-tien-loi-8-removebg-preview.png")));
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_5.setBounds(281, 0, 272, 204);
+		contentPane.add(lblNewLabel_5);
+		
+		 try {
+             if(Auth.user.getGioiTinh()=="nam")
+             {
+                 lblNewLabel_1.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-account-45.png")));
+             }
+             else{
+                 lblNewLabel_1.setIcon(new ImageIcon(trangchu.class.getResource("/icon/icons8-female-user-45.png")));
+             }
+             lblNewLabel_8.setText(Auth.user.getTenNV());
+             lblNewLabel_9.setText(Auth.user.getVaiTro());
+         } catch (Exception e) {
+         }
+
+		
+		
 		
 	 }
 	public void openmenubar() {
@@ -837,4 +1131,68 @@ new Thread(new Runnable() {
 			}
 		}).start();
 	}
+    public void opensetting() {
+    	new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+			for(int i =1;i<heightst;i++)
+			{
+				panelsetting.setSize(widthst, i);
+				try {
+					Thread.sleep(5);
+				} catch (Exception e) {
+					// TODO: handle exception
+				}
+			}
+				
+			}
+		}).start();
+    }
+ public void closesetting() {
+	 new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				for(int i =heightst;i>0;i--)
+				{
+					panelsetting.setSize(widthst, i);
+					try {
+						Thread.sleep(5);
+					} catch (Exception e) {
+						// TODO: handle exception
+					}
+				}
+				
+			}
+		}).start();
+    }
+ public void opencclt()
+ {
+	 new Thread(new Runnable() {
+		
+		@Override
+		public void run() {
+			for(int i=0;i<withcct;i++)
+			{
+				panelcclt.setSize(i, heightcct);
+			}
+			
+		}
+	}).start();
+ }
+ public void closecclt()
+ {
+	 new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				for(int i=withcct;i>0;i--)
+				{
+					panelcclt.setSize(i, heightcct);
+				}
+				
+			}
+		}).start();
+ }
 }

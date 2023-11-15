@@ -52,6 +52,7 @@ public class SPbyDanhMuc extends javax.swing.JPanel {
         }
 
     }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;

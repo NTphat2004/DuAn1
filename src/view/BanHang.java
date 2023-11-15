@@ -1,17 +1,37 @@
 package view;
 
+import Util.JdbcHelper;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.LayoutManager;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
+import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.color.ColorSpace;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class BanHang extends javax.swing.JFrame {
 
@@ -20,8 +40,14 @@ public class BanHang extends javax.swing.JFrame {
     String header2[] = {"", "Tên SP", "Giá", "Số lượng"};
     DefaultTableModel modeltbl = new DefaultTableModel(header, 5);
     DefaultTableModel modeltbl2 = new DefaultTableModel(header2, 5);
- 
+    JPanel panelsp, panelsp2, panelsp3;
+    JScrollPane scrollpane1;
+    JLabel lblIcon, lblPrice, lblName;
+    JButton btnAddCart;
     Color defaultcolor, blankcolor;
+    String ten, url;
+    float gia;
+
     public static CardLayout cl;
 
     public BanHang() {
@@ -54,6 +80,11 @@ public class BanHang extends javax.swing.JFrame {
         btnDoAn = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         spcard = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel6 = new javax.swing.JPanel();
@@ -152,16 +183,46 @@ public class BanHang extends javax.swing.JFrame {
         spcard.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
         spcard.setLayout(new java.awt.CardLayout());
 
+        jScrollPane2.setViewportView(null);
+
+        jPanel8.setLayout(new java.awt.GridLayout(50, 1));
+        jScrollPane2.setViewportView(jPanel8);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE))
+        );
+
+        spcard.add(jPanel12, "card5");
+
+        jPanel10.setLayout(new java.awt.GridLayout(20, 1));
+        spcard.add(jPanel10, "doan");
+
+        jPanel9.setLayout(new java.awt.GridLayout(20, 1));
+        spcard.add(jPanel9, "giadung");
+
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true), "Danh sách sản phẩm đã chọn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14))); // NOI18N
 
-        jPanel6.setLayout(new java.awt.GridLayout(1, 1));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jPanel6.setLayout(new java.awt.GridLayout(10, 1));
         jScrollPane1.setViewportView(jPanel6);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,7 +379,7 @@ public class BanHang extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel7)
-                        .addGap(0, 13, Short.MAX_VALUE))
+                        .addGap(0, 14, Short.MAX_VALUE))
                     .addComponent(lblThanhTIen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -331,27 +392,27 @@ public class BanHang extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(spcard, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(spcard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(spcard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(spcard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGiadungspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGiadungspMouseClicked
-        cl.show(spcard, "card2");
+
     }//GEN-LAST:event_btnGiadungspMouseClicked
 
     private void btnRauCuspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRauCuspMouseClicked
@@ -392,7 +453,88 @@ public class BanHang extends javax.swing.JFrame {
         jPanel5.setBackground(defaultcolor);
         spcard.setBackground(defaultcolor);
         jPanel7.setBackground(defaultcolor);
+        panelsp = new JPanel();
+        panelsp.setSize(350, 200);
+        panelsp.setLayout(null);
+        panelsp.setBorder(new LineBorder(Color.yellow, 2));
+        lblIcon = new JLabel();
+        lblPrice = new JLabel();
+        lblName = new JLabel();
+        btnAddCart = new JButton();
 
+        lblIcon.setSize(70, 70);
+        lblName.setSize(100, 200);
+        lblPrice.setSize(100, 200);
+        btnAddCart.setSize(60, 60);
+
+        lblIcon.setLocation(25, 30);
+        lblIcon.setIcon(new ImageIcon("C:\\Users\\phong\\Desktop\\SIEUDUAN\\src\\icon\\icons8-earth-36.png"));
+        lblName.setLocation(90, -60);
+        lblPrice.setLocation(90, -10);
+        btnAddCart.setLocation(270, 30);
+        btnAddCart.setIcon(new ImageIcon());
+        btnAddCart.setIcon(new ImageIcon("src\\icon\\add_50px.png"));
+        Border emptyBorder = BorderFactory.createEmptyBorder(6, 6, 6, 6);
+        btnAddCart.setBorder(emptyBorder);
+        btnAddCart.setContentAreaFilled(false);
+        btnAddCart.setBorderPainted(false);
+        btnAddCart.setFocusPainted(false);
+
+        panelsp.add(lblIcon);
+        panelsp.add(lblName);
+        panelsp.add(lblPrice);
+        panelsp.add(btnAddCart);
+//        jPanel8.add(panelsp);
+//        cl.show(spcard, "raucu");
+
+//        panelsp = new JPanel();
+//        panelsp.setSize(345, 100);
+//        panelsp.setLayout(new GridBagLayout());
+//
+//        panelsp2 = new JPanel();
+//        panelsp2.setSize(365, 665);
+//
+//        panelsp2.setLayout(new GridLayout(1, 1));
+//        panelsp2.setLayout();
+//        panelsp3.setLocation(0, 0);
+//        panelsp3.setSize(362, 654);
+//        panelsp3 = new JPanel();
+//        panelsp3.setLayout(new GridLayout(10, 1));
+//        panelsp3.setSize(new Dimension(365, 665));
+//        panelsp3.setBackground(Color.yellow);
+//        scrollpane1 = new JScrollPane(panelsp3, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+//        panelsp2.add(scrollpane1);
+//        lblIcon = new JLabel("icon");
+//        lblIcon.setOpaque(true);
+//        lblIcon.setBackground(Color.yellow);
+//        lblPrice = new JLabel("price");
+//        lblName = new JLabel("name");
+//        btnAddCart = new JButton("button");
+//    
+//        GridBagConstraints gbc = new GridBagConstraints();
+//        gbc.fill = GridBagConstraints.HORIZONTAL;
+//        gbc.gridx = 0;
+//        gbc.gridy = 2;
+//        panelsp.add(lblIcon, gbc);
+//
+//        gbc.gridx = 1;
+//        gbc.gridy = 0;
+//        panelsp.add(lblPrice, gbc);
+//
+//        gbc.gridx = 1;
+//        gbc.gridy = 3;
+//        panelsp.add(lblName, gbc);
+//
+//        gbc.gridx = 3;
+//        gbc.gridy = 2;
+//        panelsp.add(btnAddCart, gbc);
+//        
+//        gbc.fill = GridBagConstraints.HORIZONTAL;
+//        gbc.gridwidth = 3;
+//        gbc.gridheight = 3;
+//        panelsp.add(btnAddCart);
+//        spcard.add(panelsp2);
+//        loadSP(sqlselectsp[0]);
 //        tblSelectedSP.setModel(modeltbl2);
 //        JTableHeader th2 = tblSelectedSP.getTableHeader();
 //        th2.setPreferredSize(new Dimension(40, 40));
@@ -400,23 +542,49 @@ public class BanHang extends javax.swing.JFrame {
 //        tblSelectedSP.setBackground(defaultcolor);
 //        tblSelectedSP.getTableHeader().setForeground(new Color(255, 255, 255));
 //        tblSelectedSP.setRowHeight(100);
-
-        SPbyDanhMuc sp1 = new SPbyDanhMuc(sqlselectsp[1]);
-        spcard.add(sp1, "card1");
-
-        SPbyDanhMuc sp2 = new SPbyDanhMuc(sqlselectsp[0]);
-        spcard.add(sp2, "card2");
-
-        SPbyDanhMuc sp3 = new SPbyDanhMuc(sqlselectsp[2]);
-        spcard.add(sp3, "card3");
-        
+//        SPbyDanhMuc sp1 = new SPbyDanhMuc(sqlselectsp[1]);
+//        spcard.add(sp1, "card1");
+//
+//        SPbyDanhMuc sp2 = new SPbyDanhMuc(sqlselectsp[0]);
+//        spcard.add(sp2, "card2");
+//
+//        SPbyDanhMuc sp3 = new SPbyDanhMuc(sqlselectsp[2]);
+//        spcard.add(sp3, "card3");
 //        System.out.println(tblSelectedSP.getColumnClass(1));
+//        loadSP(sqlselectsp[0]);
+        loadSP(sqlselectsp[0]);
 
     }
 
-    public void loadSP() {
+    public void loadSP(String sql) {
+        ten = "";
+        url = "";
+        gia = 0;
 
+        try {
+            String sql1 = "Select * from DoGiaDung";
+            ResultSet rs = JdbcHelper.executeQuery(sql);
+            while (rs.next()) {
+                ten = rs.getString(2);
+                gia = rs.getFloat(3);
+                url = rs.getString(4);
+                SanPham ps = new SanPham(ten, gia, url);
+                ps.btnAddToCart.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                 SanPham ps2 = new SanPham(ten, gia, url);
+                        jPanel6.add(new SanPham(ten, gia, url));
+                    }
+                });
+                jPanel8.add(ps);
+                cl.show(spcard, "raucus");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnClose;
@@ -435,13 +603,18 @@ public class BanHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
+    public static javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblMaHD;
     private javax.swing.JLabel lblNV;
