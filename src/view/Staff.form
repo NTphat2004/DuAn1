@@ -202,7 +202,6 @@
                           <EmptySpace pref="20" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtName" max="32767" attributes="0"/>
-                              <Component id="dcBirtDay" max="32767" attributes="0"/>
                               <Component id="txtMaNV" max="32767" attributes="0"/>
                               <Component id="cboRole" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
@@ -233,10 +232,7 @@
                               </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel3" min="-2" pref="38" max="-2" attributes="0"/>
-                              <Component id="dcBirtDay" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel3" min="-2" pref="38" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="rdoNam" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -303,8 +299,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="com.toedter.calendar.JDateChooser" name="dcBirtDay">
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMaNV">
                 </Component>

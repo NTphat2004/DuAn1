@@ -19,7 +19,7 @@ public class JdbcHelper {
     private static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     private static String dburl = "jdbc:sqlserver://localhost;database=SanPham;encrypt=false;trustservercertificate=true";
     private static String username = "sa";
-    private static String password = "1234";
+    private static String password = "123";
 
     /*
 * Nạp driver

@@ -9,6 +9,8 @@ import Util.XImage;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
@@ -24,6 +26,7 @@ import javax.swing.border.Border;
 public class SanPham extends javax.swing.JPanel {
 
     Color defaultcolor, blankcolor;
+    public static SanPham sp;
 
     public SanPham(String tensp, float gia, String hinhurl) {
         initComponents();
@@ -60,6 +63,27 @@ public class SanPham extends javax.swing.JPanel {
         return btnAddToCart;
     }
 
+    public static JLabel lblicon() {
+        return lblIcon;
+    }
+
+    public static JLabel lblname() {
+        return lblName;
+    }
+
+    public static JLabel lblprice() {
+        return lblPrice;
+    }
+
+//    public void btnacction() {
+//        btnAddToCart.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                System.out.println(lblIcon.getText());
+//            }
+//        });
+//    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,6 +109,16 @@ public class SanPham extends javax.swing.JPanel {
         btnAddToCart.setBorder(null);
         btnAddToCart.setFocusable(false);
         btnAddToCart.setOpaque(true);
+        btnAddToCart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddToCartMouseClicked(evt);
+            }
+        });
+        btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddToCartActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,14 +156,22 @@ public class SanPham extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
-
-
+  
+        System.out.println(lblName.getText());
     }//GEN-LAST:event_formMouseClicked
+
+    private void btnAddToCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddToCartMouseClicked
+
+    }//GEN-LAST:event_btnAddToCartMouseClicked
+
+    private void btnAddToCartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddToCartActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnAddToCart;
-    private javax.swing.JLabel lblIcon;
-    private javax.swing.JLabel lblName;
-    private javax.swing.JLabel lblPrice;
+    public static javax.swing.JLabel lblIcon;
+    public static javax.swing.JLabel lblName;
+    public static javax.swing.JLabel lblPrice;
     // End of variables declaration//GEN-END:variables
 }

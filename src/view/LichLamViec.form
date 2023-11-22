@@ -68,14 +68,13 @@
                                   <Component id="jLabel3" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
                                   <Component id="jLabel6" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="149" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtID" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtID" alignment="0" pref="331" max="32767" attributes="0"/>
                                       <Component id="txtName" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtTime" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtMaNV" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jDateChooser1" min="-2" pref="331" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jComboBox1" min="-2" pref="134" max="-2" attributes="0"/>
                               </Group>
@@ -104,10 +103,7 @@
                           <Component id="txtName" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel3" max="32767" attributes="0"/>
-                          <Component id="jDateChooser1" min="-2" pref="41" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel3" min="-2" pref="41" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jLabel4" max="32767" attributes="0"/>
@@ -178,8 +174,6 @@
                 <Property name="text" type="java.lang.String" value="TH&#xd4;NG TIN L&#x1eca;CH L&#xc0;M VI&#x1ec6;C"/>
                 <Property name="opaque" type="boolean" value="true"/>
               </Properties>
-            </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox1">
               <Properties>
