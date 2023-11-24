@@ -41,7 +41,7 @@ import static view.SanPham.sp;
 
 public class BanHang1 extends javax.swing.JFrame {
 
-    String sqlselectsp[] = {"select * from San_Pham where Maloai like CONCAT('LSPRC','%')", "select * from San_Pham where Maloai like CONCAT('LSPRC','%')", "select * from San_Pham where Maloai like CONCAT('LSPRC','%')"};
+    String sqlselectsp[] = {"select * from San_Pham where Maloai like CONCAT('LSPRC','%')", "select * from San_Pham where Maloai like CONCAT('LSPDT','%')", "select * from San_Pham where Maloai like CONCAT('LSPTU','%')"};
     String header[] = {"", "Tên SP", "Giá"};
     String header2[] = {"", "Tên SP", "Giá", "Số lượng"};
     List<SP1> listsp = new ArrayList<SP1>();
