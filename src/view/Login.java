@@ -55,7 +55,7 @@ public class Login extends JDialog {
         panel.setLayout(null);
 
         JLabel label = new JLabel("");
-        label.setIcon(new ImageIcon(loginform.class.getResource("/icon/logo-xe-day-1.jpeg")));
+        label.setIcon(new ImageIcon("src/icon/logo-xe-day-1.jpeg"));
         label.setBounds(-228, 58, 695, 326);
         panel.add(label);
 
@@ -103,13 +103,13 @@ public class Login extends JDialog {
         panel_1.add(passwordField);
 
         JLabel lblNewLabel_2 = new JLabel("");
-        lblNewLabel_2.setIcon(new ImageIcon(loginform.class.getResource("/icon/icons8-user-36.png")));
+        lblNewLabel_2.setIcon(new ImageIcon("src/icon/icons8-user-36.png"));
         lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_2.setBounds(328, 169, 59, 34);
         panel_1.add(lblNewLabel_2);
 
         JLabel lblNewLabel_2_1 = new JLabel("");
-        lblNewLabel_2_1.setIcon(new ImageIcon(loginform.class.getResource("/icon/icons8-password-36.png")));
+        lblNewLabel_2_1.setIcon(new ImageIcon("src/icon/icons8-password-36.png"));
         lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_2_1.setBounds(328, 264, 59, 34);
         panel_1.add(lblNewLabel_2_1);

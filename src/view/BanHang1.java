@@ -41,7 +41,7 @@ import static view.SanPham.sp;
 
 public class BanHang1 extends javax.swing.JFrame {
 
-    String sqlselectsp[] = {"select * from DoGiaDung", "select * from RauCu", "select * from DoAn"};
+    String sqlselectsp[] = {"select * from San_Pham where Maloai like CONCAT('LSPRC','%')", "select * from San_Pham where Maloai like CONCAT('LSPRC','%')", "select * from San_Pham where Maloai like CONCAT('LSPRC','%')"};
     String header[] = {"", "Tên SP", "Giá"};
     String header2[] = {"", "Tên SP", "Giá", "Số lượng"};
     List<SP1> listsp = new ArrayList<SP1>();
@@ -503,6 +503,19 @@ public class BanHang1 extends javax.swing.JFrame {
         for (int x = 0; x < listspselectedsp.size(); x++) {
             model2.addRow(new Object[]{loadIconImg(listspselectedsp.get(x).getImgUrl()), listspselectedsp.get(x).getName(), listspselectedsp.get(x).getGia(), listspselectedsp.get(x).getSoluong()});
         }
+        int sumrows = tblSelectedSP.getRowCount();
+        System.out.println(sumrows);
+        float[] thanhtienTemp = new float[sumrows];
+        double thanhtien = 0;
+        for (int i = 0; i < sumrows; i++) {
+            int soluong = Integer.parseInt(tblSelectedSP.getValueAt(i, 3).toString());
+            float giatemp = Float.parseFloat(tblSelectedSP.getValueAt(i, 2).toString());
+            thanhtienTemp[i] = soluong * giatemp;
+        }
+        for (int i = 0; i < thanhtienTemp.length; i++) {
+            thanhtien = thanhtien + thanhtienTemp[i];
+        }
+        lblThanhTIen.setText(String.format("%,.0f",thanhtien)+" VNĐ");
     }//GEN-LAST:event_tblSPMouseClicked
 
     public static void main(String args[]) {
@@ -559,8 +572,8 @@ public class BanHang1 extends javax.swing.JFrame {
             ResultSet rs = JdbcHelper.executeQuery(sql);
             while (rs.next()) {
                 String name = rs.getString(2);
-                float gia = rs.getFloat(3);
-                String imgurl = rs.getString(4);
+                float gia = rs.getFloat(4);
+                String imgurl = rs.getString(9);
                 SP1 sp = new SP1(name, gia, imgurl);
                 listsp.add(sp);
                 model.setRowCount(0);
