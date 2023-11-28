@@ -11,15 +11,24 @@ package Object;
 public class SP2 {
 
     private String name;
-    private float gia;
+    private String gia;
     private String ImgUrl;
     private int soluong;
+    private  String maSp;
+
+    public SP2(String name, String gia, String ImgUrl, int soluong, String maSp) {
+        this.name = name;
+        this.gia = gia;
+        this.ImgUrl = ImgUrl;
+        this.soluong = soluong;
+        this.maSp = maSp;
+    }
 
     public String getName() {
         return name;
     }
 
-    public float getGia() {
+    public String getGia() {
         return gia;
     }
 
@@ -27,12 +36,15 @@ public class SP2 {
         return ImgUrl;
     }
 
-    public SP2(String name, float gia, String ImgUrl,int Soluong) {
-        this.name = name;
-        this.gia = gia;
-        this.ImgUrl = ImgUrl;
-        this.soluong= Soluong;
+    public String getMaSp() {
+        return maSp;
     }
+
+    public void setMaSp(String maSp) {
+        this.maSp = maSp;
+    }
+
+ 
 
     public void setSoluong(int soluong) {
         this.soluong = soluong;
@@ -46,7 +58,7 @@ public class SP2 {
         this.name = name;
     }
 
-    public void setGia(float gia) {
+    public void String(String gia) {
         this.gia = gia;
     }
 
@@ -57,4 +69,7 @@ public class SP2 {
     public SP2() {
     }
 
+    public Object[] totableRow(int rowNum) {
+        return new Object[]{this,rowNum,name, gia, ImgUrl, soluong};
+    }
 }

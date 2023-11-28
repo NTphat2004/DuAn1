@@ -10,26 +10,20 @@ package Object;
  */
 public class SP1 {
 
+    private String maSP;
     private String name;
     private float gia;
     private String ImgUrl;
 
-    public String getName() {
-        return name;
-    }
-
-    public float getGia() {
-        return gia;
-    }
-
-    public String getImgUrl() {
-        return ImgUrl;
-    }
-
-    public SP1(String name, float gia, String ImgUrl) {
+    public SP1(String maSP, String name, float gia, String ImgUrl) {
+        this.maSP = maSP;
         this.name = name;
         this.gia = gia;
         this.ImgUrl = ImgUrl;
+    }
+
+    public void setMaSP(String maSP) {
+        this.maSP = maSP;
     }
 
     public void setName(String name) {
@@ -45,6 +39,22 @@ public class SP1 {
     }
 
     public SP1() {
+    }
+
+    public String getMaSP() {
+        return maSP;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public float getGia() {
+        return gia;
+    }
+
+    public String getImgUrl() {
+        return ImgUrl;
     }
 
 }

@@ -654,13 +654,13 @@ public class trangchu extends JFrame {
         panel_2_3_3_1_3.setBackground(new Color(25, 118, 211));
         panel_2_3_3_1_1.setBackground(defaultcolor);
 
-        JLabel lblNewLabel_8 = new JLabel("NGUYỄN VĂN LỢI");
+        JLabel lblNewLabel_8 = new JLabel();
         lblNewLabel_8.setForeground(new Color(255, 255, 255));
         lblNewLabel_8.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblNewLabel_8.setBounds(68, 28, 128, 26);
         panelmenu.add(lblNewLabel_8);
 
-        JLabel lblNewLabel_9 = new JLabel("Trưởng Phòng");
+        JLabel lblNewLabel_9 = new JLabel();
         lblNewLabel_9.setFont(new Font("Tahoma", Font.BOLD, 13));
         lblNewLabel_9.setForeground(new Color(192, 192, 192));
         lblNewLabel_9.setBounds(78, 50, 90, 26);
@@ -711,8 +711,19 @@ public class trangchu extends JFrame {
 
         JLabel lblNewLabel_10 = new JLabel("");
         lblNewLabel_10.setIcon(new ImageIcon("src/icon/banhang.png"));
+        lblNewLabel_10.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                BanHang1 bh = new BanHang1();
+                dispose();
+                bh.setVisible(true);
+            }
+        
+        });
+        
         lblNewLabel_10.setBounds(0, 0, 449, 424);
         panel_3.add(lblNewLabel_10);
+        lblNewLabel_10.addMouseListener( new  MouseAdapter(){});
 
         JLabel lblNewLabel_13 = new JLabel("BÁN HÀNG");
         lblNewLabel_13.setForeground(new Color(255, 0, 0));
